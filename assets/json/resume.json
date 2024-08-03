@@ -6,7 +6,7 @@
     "email": "liuzeyu@usc.edu",
     "phone": "(213) 477-0499",
     "url": "https://zeyuliu1037.github.io",
-    "summary": "This is the summary of my resume. I am a PhD student in the Department of Computer Science at the University of Southern California. My research interests include machine learning, deep learning, and computer vision.",
+    "summary": "This is the summary of my resume. I am a PhD student in the Department of Electrical Engineering at the University of Southern California. My research interests include machine learning, deep learning, and computer vision.",
     "location": {
       "address": "250 S Pasadena Ave",
       "postalCode": "CA 91105",
@@ -28,12 +28,12 @@
       "location": "Los Angeles, CA",
       "url": "https://www.usc.edu/",
       "area": "Electrical Engineering",
-      "studyType": "PhD",
+      "studyType": "PhD (Expected)",
       "startDate": "2023-08",
-      "endDate": "2027-05 (Expected)",
+      "endDate": "2027-05",
       "score": "3.88/4.0",
       "courses": [
-        "Machine Learning"
+        "Random Process"
       ]
     },
     {
