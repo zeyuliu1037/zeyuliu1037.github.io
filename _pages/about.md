@@ -2,14 +2,14 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: This website still under construction.
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>EEB 314, USC</p>
+    <p>EEB, USC</p>
     <p>250 S Pasadena Ave</p>
     <p>Pasadena, CA 91105</p>
 
