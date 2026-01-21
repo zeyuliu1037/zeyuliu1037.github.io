@@ -7,16 +7,19 @@
 $red-color: #ff3636 !default;
 $red-color-dark: #b71c1c !default;
 $orange-color: #f29105 !default;
-$blue-color: #003366 !default; /* Academic Navy */
-$blue-color-dark: #002244 !default;
-$cyan-color: #003366 !default; /* Using Navy as primary theme color */
+$blue-color: #004481 !default;
+/* Vivid Dark Blue for Light Mode */
+$blue-color-dark: #002a50 !default;
+$cyan-color: #53d0ff !default;
+/* Bright Sky Blue for Dark Mode */
 $light-cyan-color: lighten($cyan-color, 25%);
 $green-color: #00ab37 !default;
 $green-color-lime: #b7d12a !default;
 $green-color-dark: #009f06 !default;
 $green-color-light: #ddffdd !default;
 $green-color-bright: #11d68b !default;
-$purple-color: #800020 !default; /* Burgundy accent */
+$purple-color: #800020 !default;
+/* Burgundy accent */
 $light-purple-color: lighten($purple-color, 25%);
 $pink-color: #f92080 !default;
 $pink-color-light: #ffdddd !default;
