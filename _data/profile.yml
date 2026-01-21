@@ -1,0 +1,15 @@
+first_name: Zeyu
+middle_name: 
+last_name: Liu
+email: liuzeyu@usc.edu
+subtitle: This website still under construction.
+address: >
+  <p>EEB, USC</p>
+  <p>1115 Cordova St</p>
+  <p>Pasadena, CA 91106</p>
+
+# Social links are currently in _config.yml, but we can override or reference them here if we want a complete profile object.
+# For now, keeping the profile-specific content here.
+
+bio: >
+  I am a third-year PhD student at <a href="https://sites.usc.edu/eessc/" target="_blank">EESSC</a> lab in the <a href="https://viterbischool.usc.edu/" target="_blank">Viterbi School of Engineering</a> of the <a href="https://www.usc.edu/" target="_blank">University of Southern California</a> advised by <a href="https://viterbi.usc.edu/directory/faculty/Beerel/Peter" target="_blank">Prof. Peter Beerel</a>. My research interests lie in the field of Efficient Artificial Intelligence. Currently, my recent works involve spiking neural network, state space models and efficient fine-tuning of large language models.
