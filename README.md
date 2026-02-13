@@ -1,10 +1,16 @@
 # Portal - Portfolio
 
-A Next.js portfolio site with an integrated Sanity CMS. Content can be served from either Sanity or a local static file (`data/content.ts`), controlled by a single environment variable.
+很好，我帮你把这段话改成更自然、专业，同时保持你那种轻松一点的语气 👇
+
+✨ Refined Version
+
+Hi! This is a bento-style portfolio page designed by me and developed collaboratively with AI. Feel free to clone this repository to use, customize, or even improve it for your own projects.
+
+Sanity CMS is integrated (mainly because I wanted to explore working with a CMS), but it’s completely optional.Content can be served either from Sanity or from a local static file (data/content.ts), controlled by a single environment variable. You can run and deploy the site without configuring Sanity. Please check the setup instructions below — they were generated with AI assistance, but they’re clear and tested step by step.
 
 ## Demo
 
-[My portofolio](https://zoelong.xyz)
+[live demo](https://bento-portofolio-template.vercel.app/)
 
 ### Laptop
 
@@ -45,28 +51,33 @@ lib/
 
 ### Configure Environment
 
-Copy the example file and fill in your Sanity project credentials:
+Copy the example file:
 
 ```bash
 cp .env.example .env.local
 ```
 
-Required variables in `.env.local`:
+**Sanity is optional.** You can deploy without any Sanity configuration — the site will use local data from `data/content.ts` by default.
+
+To enable Sanity CMS, add your project credentials to `.env.local`:
 
 ```env
 NEXT_PUBLIC_SANITY_PROJECT_ID="your-project-id"
 NEXT_PUBLIC_SANITY_DATASET="production"
-NEXT_PUBLIC_USE_SANITY="false"
+NEXT_PUBLIC_USE_SANITY="true"
 ```
 
 ### Run Sanity Studio Locally
 
 Sanity Studio is embedded in the Next.js app at the `/studio` route. No separate process is needed.
 
-1. Start the dev server: `npm run dev`
-2. Open [http://localhost:3000/studio](http://localhost:3000/studio)
-3. Log in with your Sanity account
-4. Add content for each section: Hero, Skills, About, Contact, and Project Categories
+1. Ensure your Sanity credentials are set in `.env.local`
+2. Start the dev server: `npm run dev`
+3. Open [http://localhost:3000/studio](http://localhost:3000/studio)
+4. Log in with your Sanity account
+5. Add content for each section: Hero, Skills, About, Contact, and Project Categories
+
+> **Note:** If Sanity is not configured, visiting `/studio` will show a configuration message instead.
 
 ### Connect Sanity to the Site
 
@@ -88,16 +99,30 @@ NEXT_PUBLIC_USE_SANITY="false"
 
 Restart the dev server after changing this value.
 
-When Sanity is enabled but a section is missing data (e.g. the document hasn't been created yet), the site falls back to the corresponding local data for that section.
+When Sanity is enabled but a section is missing data (e.g., the document hasn't been created yet), the site falls back to the corresponding local data for that section.
 
-### Deploy the CMS
+### Deploy
+
+#### Without Sanity (Simple)
+
+No extra configuration needed. Just deploy the Next.js app:
+
+```bash
+npm run build
+```
+
+The site will use local data from `data/content.ts`.
+
+#### With Sanity CMS
 
 Sanity Studio ships as part of the Next.js build. No separate deployment step is needed.
 
-1. Ensure `.env.local` variables are set in your hosting provider (e.g. Vercel environment variables)
-2. Set `NEXT_PUBLIC_USE_SANITY="true"` in your production environment
-3. Deploy the Next.js app as usual (`npm run build` or via Git integration)
-4. The studio will be accessible at `your-domain.com/studio`
+1. Set environment variables in your hosting provider (e.g., Vercel):
+   - `NEXT_PUBLIC_SANITY_PROJECT_ID`
+   - `NEXT_PUBLIC_SANITY_DATASET`
+   - `NEXT_PUBLIC_USE_SANITY="true"`
+2. Deploy the Next.js app as usual (`npm run build` or via Git integration)
+3. The studio will be accessible at `your-domain.com/studio`
 
 To manage CORS origins (required for the studio to communicate with Sanity's API):
 

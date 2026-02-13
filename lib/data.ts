@@ -7,6 +7,7 @@ import {
   projectCategories,
 } from "@/data/content";
 import { client } from "@/sanity/lib/client";
+import { isSanityConfigured } from "@/sanity/env";
 import {
   heroQuery,
   skillsQuery,
@@ -22,7 +23,8 @@ const USE_SANITY = process.env.NEXT_PUBLIC_USE_SANITY === "true";
  * controlled by the NEXT_PUBLIC_USE_SANITY environment variable.
  */
 export async function getSiteData(): Promise<SiteData> {
-  if (!USE_SANITY) {
+  // Use local data if Sanity is disabled or not configured
+  if (!USE_SANITY || !isSanityConfigured || !client) {
     return {
       hero: heroData,
       skills: skillsData,
