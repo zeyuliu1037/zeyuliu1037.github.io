@@ -4,9 +4,11 @@ A Next.js portfolio site with an integrated Sanity CMS. Content can be served fr
 
 ## Demo
 
+[My portofolio](https://zoelong.xyz)
+
 ### Laptop
 
-![Laptop Demo](public/example/laptop.gif)
+<img src="public/example/laptop.gif" alt="Mobile Demo" width="400">
 
 ### Mobile
 
