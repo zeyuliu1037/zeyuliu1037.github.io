@@ -41,7 +41,7 @@ export const projectCategory = defineType({
               validation: (rule) => rule.required(),
             }),
             defineField({
-              name: 'techStack',
+              name: 'duration',
               title: 'Tech Stack',
               type: 'array',
               of: [{ type: 'string' }],

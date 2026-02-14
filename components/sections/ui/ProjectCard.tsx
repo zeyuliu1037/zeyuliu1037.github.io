@@ -3,14 +3,14 @@ import Image from "next/image";
 type ProjectCardProps = {
   title: string;
   image: string;
-  techStack: string[];
+  duration: string[];
   href?: string;
 };
 
 export function ProjectCard({
   title,
   image,
-  techStack,
+  duration,
   href,
 }: ProjectCardProps) {
   const CardWrapper = href ? "a" : "div";
@@ -40,7 +40,7 @@ export function ProjectCard({
 
         {/* Tech Stack */}
         <div className="flex items-center gap-3">
-          {techStack.map((tech) => (
+          {duration.map((tech) => (
             <span key={tech} className="text-meta">
               {tech}
             </span>

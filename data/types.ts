@@ -25,7 +25,7 @@ export type ContactEntry = {
 export type Project = {
   title: string;
   image: string;
-  duration: string;
+  duration: string[];
   href?: string;
 };
 

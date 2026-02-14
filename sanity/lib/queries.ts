@@ -28,7 +28,7 @@ export const projectCategoriesQuery = defineQuery(
     projects[]{
       title,
       "image": image.asset->url,
-      techStack,
+      duration,
       href
     }
   }`,

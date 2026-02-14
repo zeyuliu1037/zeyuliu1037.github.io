@@ -33,7 +33,7 @@ export function WorkSection({
                 key={project.title}
                 title={project.title}
                 image={project.image}
-                techStack={project.techStack}
+                duration={project.duration}
                 href={project.href}
               />
             ))}
