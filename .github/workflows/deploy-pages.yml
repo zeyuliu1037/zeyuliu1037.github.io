@@ -33,7 +33,7 @@ jobs:
       # Project site: base path = /repo-name. For user/org site (username.github.io), set GITHUB_PAGES_BASE_PATH: "" below.
       - name: Build
         env:
-          GITHUB_PAGES_BASE_PATH: /${{ github.event.repository.name }}
+          GITHUB_PAGES_BASE_PATH: ""
           # Optional: use Sanity at build time (add in repo Secrets if needed)
           # NEXT_PUBLIC_USE_SANITY: "true"
           # NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
