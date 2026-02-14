@@ -2,7 +2,9 @@ import type { NextConfig } from "next";
 
 // For GitHub Pages project site: set to your repo name, e.g. "/bento_portofolio_template"
 // For user/org site (username.github.io): leave unset
-const basePath = process.env.GITHUB_PAGES_BASE_PATH ?? "";
+// const basePath = process.env.GITHUB_PAGES_BASE_PATH ?? "";
+const basePath = ""; // Force root path for username.github.io
+
 
 const nextConfig: NextConfig = {
   output: "export",
