@@ -99,6 +99,24 @@ When Sanity is enabled but a section is missing data (e.g., the document hasn't 
 
 ### Deploy
 
+#### GitHub Pages (personal homepage)
+
+The project is set up to deploy as a **static site** to GitHub Pages without losing style or function:
+
+- **Static export**: `next build` produces an `out/` folder (static HTML, CSS, JS). No Node server is needed.
+- **Data**: Content is baked in at build time from `data/content.ts` or from Sanity if enabled. No runtime server required.
+- **Assets**: Fonts, Tailwind, and images (including Sanity CDN) are included; images use `unoptimized: true` so they work on static hosting.
+- **Studio**: Sanity Studio at `/studio` is a client-side app that talks to Sanity’s API; it works from the static export.
+
+**Steps:**
+
+1. In the repo: **Settings → Pages → Build and deployment**: set **Source** to **GitHub Actions**.
+2. Push to `main` (or run the “Deploy to GitHub Pages” workflow manually). The workflow builds the app and deploys the `out/` folder.
+3. **Project site** (e.g. `https://username.github.io/bento_portofolio_template/`): the workflow sets `GITHUB_PAGES_BASE_PATH` to your repo name; no change needed.
+4. **User/org site** (e.g. `https://username.github.io`): edit `.github/workflows/deploy-pages.yml` and set `GITHUB_PAGES_BASE_PATH: ""` in the Build step’s `env`.
+
+To use **Sanity** on GitHub Pages, add repo **Secrets**: `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, and in the workflow uncomment and set `NEXT_PUBLIC_USE_SANITY: "true"` and the Sanity env vars. Add your Pages URL (including base path if project site) to [Sanity CORS](https://www.sanity.io/docs/cors) (e.g. `https://username.github.io` or `https://username.github.io/bento_portofolio_template`).
+
 #### Without Sanity (Simple)
 
 No extra configuration needed. Just deploy the Next.js app:
