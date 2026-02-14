@@ -112,10 +112,14 @@ The project is set up to deploy as a **static site** to GitHub Pages without los
 
 1. In the repo: **Settings → Pages → Build and deployment**: set **Source** to **GitHub Actions**.
 2. Push to `main` (or run the “Deploy to GitHub Pages” workflow manually). The workflow builds the app and deploys the `out/` folder.
-3. **Project site** (e.g. `https://username.github.io/bento_portofolio_template/`): the workflow sets `GITHUB_PAGES_BASE_PATH` to your repo name; no change needed.
-4. **User/org site** (e.g. `https://username.github.io`): edit `.github/workflows/deploy-pages.yml` and set `GITHUB_PAGES_BASE_PATH: ""` in the Build step’s `env`.
+3. **Personal site at root** (e.g. `https://username.github.io/`): use a repo named **`username.github.io`**. The workflow detects this and builds with no base path. Put this template's code in that repo and deploy.
+4. **Project site** (e.g. `https://username.github.io/bento_portofolio_template/`): use any other repo name; the workflow uses the repo name as base path.
 
 To use **Sanity** on GitHub Pages, add repo **Secrets**: `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, and in the workflow uncomment and set `NEXT_PUBLIC_USE_SANITY: "true"` and the Sanity env vars. Add your Pages URL (including base path if project site) to [Sanity CORS](https://www.sanity.io/docs/cors) (e.g. `https://username.github.io` or `https://username.github.io/bento_portofolio_template`).
+
+**Which URL shows the portfolio?** For a **personal site** use a repo named `username.github.io` → your site is **`https://username.github.io/`**. For any other repo name the site is **`https://username.github.io/repo-name/`**.
+
+**If you see the README instead of the portfolio:** (1) Use the project URL above, not the repo URL on github.com. (2) Set **Settings → Pages → Source** to **"GitHub Actions"**. (3) Run the "Deploy to GitHub Pages" workflow (push to `main` or run it from the Actions tab) and wait for it to finish.
 
 #### Without Sanity (Simple)
 

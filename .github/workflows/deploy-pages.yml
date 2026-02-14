@@ -1,4 +1,8 @@
 # Deploy Next.js static export to GitHub Pages
+#
+# IMPORTANT: In your repo go to Settings → Pages → Build and deployment
+# and set Source to "GitHub Actions". If you leave it on "Deploy from a branch",
+# GitHub will serve the repo (README, etc.) instead of this built site.
 name: Deploy to GitHub Pages
 
 on:
@@ -30,10 +34,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Project site: base path = /repo-name. For user/org site (username.github.io), set GITHUB_PAGES_BASE_PATH: "" below.
+      # Personal site (repo username.github.io) → served at https://username.github.io/ → no base path.
+      # Project site (other repo names) → served at https://username.github.io/repo-name/ → base path = /repo-name.
       - name: Build
         env:
-          GITHUB_PAGES_BASE_PATH: ""
+          GITHUB_PAGES_BASE_PATH: ${{ endsWith(github.event.repository.name, '.github.io') && '' || format('/{0}', github.event.repository.name) }}
           # Optional: use Sanity at build time (add in repo Secrets if needed)
           # NEXT_PUBLIC_USE_SANITY: "true"
           # NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
