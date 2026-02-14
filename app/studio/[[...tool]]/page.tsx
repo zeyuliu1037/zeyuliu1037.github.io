@@ -72,5 +72,5 @@ export default async function StudioPage() {
 
   const { default: config } = await import("@/sanity.config");
   const { NextStudio } = await import("next-sanity/studio");
-  return <NextStudio config={config} />;
+  return <NextStudio config={config!} />;
 }
