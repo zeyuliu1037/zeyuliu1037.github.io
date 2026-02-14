@@ -7,7 +7,7 @@
  * https://github.com/sanity-io/next-sanity
  */
 
-import { NextStudio } from "next-sanity/studio";
+import type { Metadata, Viewport } from "next";
 import config from "@/sanity.config";
 
 export const dynamic = "force-static";
@@ -17,10 +17,17 @@ export function generateStaticParams() {
   return [{ tool: [] }];
 }
 
-export { metadata, viewport } from "next-sanity/studio";
+/** Use local metadata/viewport so we don't load next-sanity/studio when config is null (e.g. in CI). */
+export const metadata: Metadata = {
+  title: "Sanity Studio",
+};
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
-export default function StudioPage() {
-  // Show message if Sanity is not configured
+export default async function StudioPage() {
+  // Show message if Sanity is not configured (e.g. GitHub Actions without Sanity secrets)
   if (!config) {
     return (
       <div
@@ -55,5 +62,6 @@ export default function StudioPage() {
     );
   }
 
+  const { NextStudio } = await import("next-sanity/studio");
   return <NextStudio config={config} />;
 }
