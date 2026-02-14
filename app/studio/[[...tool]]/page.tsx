@@ -5,10 +5,12 @@
  *
  * You can learn more about the next-sanity package here:
  * https://github.com/sanity-io/next-sanity
+ *
+ * We avoid importing sanity.config or next-sanity/studio when env vars are unset (e.g. CI)
+ * so the build does not run code that expects a configured Sanity client.
  */
 
 import type { Metadata, Viewport } from "next";
-import config from "@/sanity.config";
 
 export const dynamic = "force-static";
 
@@ -17,7 +19,6 @@ export function generateStaticParams() {
   return [{ tool: [] }];
 }
 
-/** Use local metadata/viewport so we don't load next-sanity/studio when config is null (e.g. in CI). */
 export const metadata: Metadata = {
   title: "Sanity Studio",
 };
@@ -26,42 +27,50 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default async function StudioPage() {
-  // Show message if Sanity is not configured (e.g. GitHub Actions without Sanity secrets)
-  if (!config) {
-    return (
-      <div
+function NotConfiguredMessage() {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+        fontFamily: "system-ui, sans-serif",
+        padding: "2rem",
+        textAlign: "center",
+      }}
+    >
+      <h1 style={{ marginBottom: "1rem" }}>Sanity Studio Not Configured</h1>
+      <p style={{ color: "#666", maxWidth: "500px" }}>
+        To use Sanity Studio, please set the following environment variables:
+      </p>
+      <code
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-          fontFamily: "system-ui, sans-serif",
-          padding: "2rem",
-          textAlign: "center",
+          background: "#f4f4f4",
+          padding: "1rem",
+          borderRadius: "8px",
+          marginTop: "1rem",
         }}
       >
-        <h1 style={{ marginBottom: "1rem" }}>Sanity Studio Not Configured</h1>
-        <p style={{ color: "#666", maxWidth: "500px" }}>
-          To use Sanity Studio, please set the following environment variables:
-        </p>
-        <code
-          style={{
-            background: "#f4f4f4",
-            padding: "1rem",
-            borderRadius: "8px",
-            marginTop: "1rem",
-          }}
-        >
-          NEXT_PUBLIC_SANITY_PROJECT_ID
-          <br />
-          NEXT_PUBLIC_SANITY_DATASET
-        </code>
-      </div>
-    );
+        NEXT_PUBLIC_SANITY_PROJECT_ID
+        <br />
+        NEXT_PUBLIC_SANITY_DATASET
+      </code>
+    </div>
+  );
+}
+
+export default async function StudioPage() {
+  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+  const isConfigured = Boolean(projectId && dataset);
+
+  if (!isConfigured) {
+    return <NotConfiguredMessage />;
   }
 
+  const { default: config } = await import("@/sanity.config");
   const { NextStudio } = await import("next-sanity/studio");
   return <NextStudio config={config} />;
 }
