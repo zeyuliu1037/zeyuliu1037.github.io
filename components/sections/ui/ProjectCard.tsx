@@ -3,7 +3,7 @@ import Image from "next/image";
 type ProjectCardProps = {
   title: string;
   image: string;
-  duration: string[];
+  duration: string;
   href?: string;
 };
 
@@ -21,30 +21,28 @@ export function ProjectCard({
   return (
     <CardWrapper
       {...cardProps}
-      className="relative group block overflow-hidden rounded-2xl bg-[#fdfdfd] transition-shadow hover:shadow-lg"
+      className="relative group block overflow-hidden rounded-2xl bg-[#fdfdfd] transition-shadow hover:shadow-lg border border-gray-100"
     >
       {/* Image Area */}
-      <div className="relative aspect-2/1 w-full overflow-hidden">
+      <div className="relative aspect-2/1 w-full bg-white p-4 overflow-hidden">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
         />
       </div>
 
       {/* Footer */}
-      <div className="absolute bottom-0 w-full flex items-center justify-between px-4 py-1 bg-white/80">
+      <div className="absolute bottom-0 w-full flex items-center justify-between px-4 py-1 bg-white/90 backdrop-blur-sm border-t border-gray-100">
         {/* Title */}
-        <h4 className="heading-card text-black">{title}</h4>
+        <h4 className="heading-card text-black font-semibold truncate mr-2">{title}</h4>
 
-        {/* Tech Stack */}
-        <div className="flex items-center gap-3">
-          {duration.map((tech) => (
-            <span key={tech} className="text-meta">
-              {tech}
-            </span>
-          ))}
+        {/* Duration */}
+        <div className="flex items-center shrink-0">
+          <span className="text-meta font-medium">
+            {duration}
+          </span>
         </div>
       </div>
     </CardWrapper>
